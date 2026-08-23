@@ -9,13 +9,19 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@google/genai": "^2.18.0",
+    "bcryptjs": "^3.0.3",
     "framer-motion": "^12.42.2",
+    "jsonwebtoken": "^9.0.3",
     "lucide-react": "^1.23.0",
+    "mongoose": "^9.9.3",
     "next": "16.2.10",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
