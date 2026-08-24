@@ -1,36 +1,131 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 PlacementAI - AI-Powered Placement Preparation Platform
 
-## Getting Started
+> A comprehensive, full-stack platform designed to streamline student placement preparation with Gemini 2.5 AI, real-time ATS resume parsing, company roadmaps, interactive mock interviews, and MongoDB persistence.
 
-First, run the development server:
+---
+
+## ✨ Features
+
+- 📄 **AI Resume & ATS Analyzer**: Drag-and-drop file upload support for `.pdf`, `.docx`, and `.txt` files. Uses Gemini AI to calculate role-specific ATS match scores, extract missing keywords, and suggest bullet optimizations.
+- 🎯 **Company-Specific Roadmaps**: Tailored recruitment guides for top tech companies (Google, Amazon, Microsoft, Meta, TCS, Uber). Includes selection process rounds, high-yield topics, and past interview questions.
+- 💬 **AI Mock Interview Simulator**: Practice technical and behavioral interview questions with instant AI evaluation of your technical accuracy, communication clarity, and STAR framework responses.
+- 🧩 **DSA Preparation Tracker**: Interactive problem tracker categorized by pattern (Arrays, Dynamic Programming, Graphs, Two Pointers) with solved toggles, difficulty filters, and bookmarks.
+- 🍃 **MongoDB Database Persistence**: Serverless MongoDB connection with Mongoose schemas for user authentication (`bcryptjs`), target configuration, ATS report history, and mock interview logs.
+- 📊 **Placement Readiness Analytics**: Track active daily streaks, placement probability metrics, and consolidated competitive programming stats (LeetCode, Codeforces, HackerRank, GFG).
+- 🎨 **Dark Glassmorphism UI**: Apple-inspired, accessible dark UI with smooth CSS animations, glassmorphism panels, and mobile-responsive drawer navigation.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js 16 (App Router)](https://nextjs.org/) & React 19
+- **AI Integration**: [Google Gemini AI SDK (`@google/genai`)](https://www.npmjs.com/package/@google/genai)
+- **Database**: [MongoDB](https://www.mongodb.com/) with [Mongoose ORM](https://mongoosejs.com/)
+- **Document Extractors**: `pdf-parse` (PDF) & `mammoth` (Word .docx)
+- **Authentication**: JWT (`jsonwebtoken`) & Password Hashing (`bcryptjs`)
+- **Icons & Styling**: `lucide-react`, `framer-motion`, Vanilla CSS Design Tokens
+
+---
+
+## 📂 Project Structure
+
+```text
+AI-Placement-Preparation-Platform/
+├── src/
+│   ├── app/
+│   │   ├── api/                      # Next.js Serverless API Routes
+│   │   │   ├── auth/                 # Login & Registration APIs
+│   │   │   ├── company-prep/         # Gemini Company Guide Generator API
+│   │   │   ├── mock-interview/       # Gemini AI Mock Interview API
+│   │   │   ├── resume-analyze/       # Document Parser & ATS Evaluator API
+│   │   │   └── user/profile/         # User Profile & Solved DSA API
+│   │   ├── auth/                     # Sign In & Registration Page
+│   │   ├── dashboard/                # Main Application Shell & Navigation
+│   │   │   ├── ats/                  # ATS Report History Page
+│   │   │   ├── bookmarks/            # Saved Bookmarks & Resources
+│   │   │   ├── companies/            # Company Roadmaps Hub
+│   │   │   ├── dsa/                  # Interactive DSA Problem Tracker
+│   │   │   ├── interviews/           # AI Mock Interview Practice Room
+│   │   │   ├── notifications/        # User Alerts & Milestones
+│   │   │   ├── platforms/            # Coding Platform Sync
+│   │   │   ├── progress/             # Readiness Analytics Page
+│   │   │   ├── resume/               # Resume Upload & ATS Analyzer
+│   │   │   └── settings/             # User Target & Profile Settings
+│   │   ├── globals.css               # Design System Variables & Theme
+│   │   ├── page.tsx                  # SaaS Landing Page & Hero Preview
+│   │   └── layout.tsx                # Root Application Layout
+│   ├── lib/
+│   │   ├── mongodb.ts                # Serverless MongoDB Connection Singleton
+│   │   └── storage.ts                # Unified Local Storage State Manager
+│   └── models/                       # Mongoose Schemas (User, ATSReport, MockInterview)
+├── .env.local                        # Local Environment Variables
+├── package.json                      # Dependencies & NPM Scripts
+└── README.md                         # Project Documentation
+```
+
+---
+
+## ⚙️ Environment Configuration
+
+Create a `.env.local` file in the root directory:
+
+```env
+# Gemini API Key for AI Features
+GEMINI_API_KEY=your_gemini_api_key_here
+
+# MongoDB Connection URI (Local or MongoDB Atlas)
+MONGODB_URI=mongodb://localhost:27017/placement_assistant
+
+# Secret Key for JWT Authentication
+JWT_SECRET=super_secret_placement_ai_jwt_key_2026
+```
+
+> **Note**: Smart fallback handlers are built in so all features work seamlessly out of the box even before adding your Gemini API key or live database URI!
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/MonuGurjar/AI-Placement-Preparation-Platform.git
+cd AI-Placement-Preparation-Platform
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Run Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 4. Build for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🧪 Verification & Health Check
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+You can verify the TypeScript compilation and production build at any time:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run build
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📄 License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
