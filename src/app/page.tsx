@@ -472,45 +472,52 @@ export default function LandingPage() {
       {/* Footer */}
       <footer className="footer">
         <div className="footer-content">
-          <div className="footer-col">
-            <div className="logo" style={{ marginBottom: '1.5rem' }}>
+          <div className="footer-brand">
+            <div className="logo" style={{ marginBottom: '0.8rem' }}>
               <BrainCircuit color="var(--color-primary)" />
               <span>PlacementAI</span>
             </div>
-            <p style={{ color: 'var(--color-on-surface-variant)', fontSize: '0.9rem' }}>
-              Empowering students to crack their dream jobs with structured, AI-driven preparation.
+            <p style={{ color: 'var(--color-on-surface-variant)', fontSize: '0.85rem', lineHeight: 1.5 }}>
+              Empowering students to crack their dream jobs with structured, AI-driven placement preparation.
             </p>
           </div>
-          <div className="footer-col">
-            <h4>Product</h4>
-            <ul className="footer-links">
-              <li><Link href="#">Features</Link></li>
-              <li><Link href="#">Pricing</Link></li>
-              <li><Link href="#">Testimonials</Link></li>
-              <li><Link href="#">FAQ</Link></li>
-            </ul>
-          </div>
-          <div className="footer-col">
-            <h4>Resources</h4>
-            <ul className="footer-links">
-              <li><Link href="#">DSA Guide</Link></li>
-              <li><Link href="#">Resume Tips</Link></li>
-              <li><Link href="#">Interview Questions</Link></li>
-              <li><Link href="#">Blog</Link></li>
-            </ul>
-          </div>
-          <div className="footer-col">
-            <h4>Company</h4>
-            <ul className="footer-links">
-              <li><Link href="#">About Us</Link></li>
-              <li><Link href="#">Contact</Link></li>
-              <li><Link href="#">Privacy Policy</Link></li>
-              <li><Link href="#">Terms of Service</Link></li>
-            </ul>
+
+          <div className="footer-nav-groups">
+            <div className="footer-col">
+              <h4>Product</h4>
+              <ul className="footer-links">
+                <li><Link href="#features">Features</Link></li>
+                <li><Link href="#pricing">Pricing</Link></li>
+                <li><Link href="/auth?mode=signup">Get Started</Link></li>
+              </ul>
+            </div>
+
+            <div className="footer-col">
+              <h4>Resources</h4>
+              <ul className="footer-links">
+                <li><Link href="#dsa">DSA Tracker</Link></li>
+                <li><Link href="#resume">Resume Analyzer</Link></li>
+                <li><Link href="#companies">Roadmaps</Link></li>
+              </ul>
+            </div>
+
+            <div className="footer-col">
+              <h4>Company</h4>
+              <ul className="footer-links">
+                <li><Link href="/dashboard">Demo</Link></li>
+                <li><Link href="/auth?mode=login">Login</Link></li>
+                <li><Link href="#features">About</Link></li>
+              </ul>
+            </div>
           </div>
         </div>
+
         <div className="footer-bottom">
-          &copy; {new Date().getFullYear()} Smart Placement Assistant. All rights reserved.
+          <span>&copy; {new Date().getFullYear()} PlacementAI. All rights reserved.</span>
+          <div style={{ display: 'flex', gap: '16px' }}>
+            <Link href="#">Privacy Policy</Link>
+            <Link href="#">Terms of Service</Link>
+          </div>
         </div>
       </footer>
     </div>

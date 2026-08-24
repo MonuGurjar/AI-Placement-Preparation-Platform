@@ -221,31 +221,49 @@
 /* Footer */
 .footer {
   border-top: 1px solid rgba(133, 149, 133, 0.1);
-  padding: 4rem 5% 2rem;
+  padding: 3rem 5% 1.5rem;
   margin-top: auto;
+  background: rgba(13, 17, 23, 0.5);
 }
 
 .footer-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 3rem;
   margin-bottom: 2rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-brand {
+  max-width: 320px;
+}
+
+.footer-nav-groups {
+  display: flex;
+  gap: 3.5rem;
+  text-align: right;
 }
 
 .footer-col h4 {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.8rem;
   color: var(--color-on-surface);
+  font-size: 0.95rem;
+  font-weight: 600;
 }
 
 .footer-links {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 
 .footer-links a {
   color: var(--color-on-surface-variant);
+  font-size: 0.85rem;
   transition: color var(--transition-fast);
 }
 
@@ -254,11 +272,15 @@
 }
 
 .footer-bottom {
-  text-align: center;
-  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1.5rem;
   border-top: 1px solid rgba(133, 149, 133, 0.1);
   color: var(--color-on-surface-variant);
-  font-size: 0.9rem;
+  font-size: 0.8rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 @media (max-width: 768px) {
@@ -336,9 +358,34 @@
     font-size: 0.82rem;
     line-height: 1.4;
   }
+  .footer {
+    padding: 2rem 4% 1.25rem;
+  }
   .footer-content {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .footer-brand {
+    max-width: 100%;
+    text-align: left;
+  }
+  .footer-nav-groups {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    text-align: left;
+  }
+  .footer-nav-groups .footer-col:last-child {
+    text-align: right;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+    padding-top: 1.25rem;
+    font-size: 0.75rem;
   }
 }
 
