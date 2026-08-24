@@ -105,7 +105,7 @@ export default function LandingPage() {
             animationDelay: '0.4s', 
             textAlign: 'left',
             height: 'auto',
-            minHeight: '520px',
+            minHeight: '440px',
             background: '#0d1117',
             border: '1px solid rgba(255,255,255,0.08)',
             borderRadius: '16px',
