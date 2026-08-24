@@ -10,8 +10,6 @@ import {
   Target, 
   LayoutDashboard,
   BrainCircuit,
-  Menu,
-  X,
   Search,
   Flame,
   Bell,
@@ -26,7 +24,6 @@ import {
 import './page.css';
 
 export default function LandingPage() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <div className="landing-page">
@@ -51,29 +48,14 @@ export default function LandingPage() {
             <button className="btn-primary">Get Started</button>
           </Link>
         </div>
-        <button className="mobile-menu-btn" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-          {mobileMenuOpen ? <X size={24} color="var(--color-on-surface)" /> : <Menu size={24} color="var(--color-on-surface)" />}
-        </button>
-      </nav>
-
-      {/* Mobile Menu Overlay */}
-      {mobileMenuOpen && (
-        <div className="mobile-menu">
-          <Link href="#features" onClick={() => setMobileMenuOpen(false)}>Features</Link>
-          <Link href="#companies" onClick={() => setMobileMenuOpen(false)}>Companies</Link>
-          <Link href="#dsa" onClick={() => setMobileMenuOpen(false)}>DSA Tracker</Link>
-          <Link href="#resume" onClick={() => setMobileMenuOpen(false)}>Resume Analyzer</Link>
-          <Link href="#pricing" onClick={() => setMobileMenuOpen(false)}>Pricing</Link>
-          <div className="mobile-menu-actions">
-            <Link href="/auth?mode=login" onClick={() => setMobileMenuOpen(false)}>
-              <button className="btn-secondary" style={{ width: '100%' }}>Login</button>
-            </Link>
-            <Link href="/auth?mode=signup" onClick={() => setMobileMenuOpen(false)}>
-              <button className="btn-primary" style={{ width: '100%' }}>Get Started</button>
-            </Link>
-          </div>
+        <div className="mobile-header-action">
+          <Link href="/auth?mode=signup">
+            <button className="btn-primary" style={{ padding: '8px 16px', fontSize: '0.85rem', fontWeight: 600 }}>
+              Get Started
+            </button>
+          </Link>
         </div>
-      )}
+      </nav>
 
       {/* Hero Section */}
       <section className="hero">
@@ -96,7 +78,63 @@ export default function LandingPage() {
           <Link href="/auth?mode=signup">
             <button className="btn-primary">Start Your Journey</button>
           </Link>
-          <button className="btn-secondary">View Demo</button>
+          <Link href="/dashboard">
+            <button className="btn-secondary" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+              <PlayCircle size={18} /> View Live Demo
+            </button>
+          </Link>
+        </div>
+
+        {/* Mobile Hero Showcase (Replaces desktop image on mobile screens) */}
+        <div className="mobile-hero-showcase animate-fade-in-up">
+          <div className="mobile-showcase-card">
+            <div className="mobile-showcase-header">
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <BrainCircuit size={20} color="#75ff9e" />
+                <span style={{ fontWeight: 700, fontSize: '0.95rem', color: 'white' }}>PlacementAI Mobile</span>
+              </div>
+              <span className="mobile-live-badge">● LIVE DASHBOARD</span>
+            </div>
+
+            {/* Stat Pills */}
+            <div className="mobile-stats-row">
+              <div className="mobile-stat-pill">
+                <span className="stat-value">85%</span>
+                <span className="stat-label">ATS Score</span>
+              </div>
+              <div className="mobile-stat-pill">
+                <span className="stat-value">92%</span>
+                <span className="stat-label">Prob.</span>
+              </div>
+              <div className="mobile-stat-pill">
+                <span className="stat-value">12 🔥</span>
+                <span className="stat-label">Streak</span>
+              </div>
+            </div>
+
+            {/* Quick Feature Pills */}
+            <div className="mobile-feature-pills">
+              <div className="mobile-pill active"><FileCheck size={14} /> Resume ATS Scan</div>
+              <div className="mobile-pill"><Code2 size={14} /> DSA Tracker</div>
+              <div className="mobile-pill"><Target size={14} /> AI Mock Interview</div>
+            </div>
+
+            {/* Live Action Box */}
+            <div className="mobile-action-box">
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                <div style={{ fontSize: '0.8rem', fontWeight: 600, color: 'white' }}>Daily Challenge: Two Sum</div>
+                <span style={{ fontSize: '0.7rem', color: '#75ff9e', fontWeight: 600 }}>Easy</span>
+              </div>
+              <p style={{ fontSize: '0.75rem', color: 'var(--color-on-surface-variant)', marginBottom: '12px' }}>
+                Target Company: <strong style={{ color: 'white' }}>Software Engineer @ Google</strong>
+              </p>
+              <Link href="/dashboard">
+                <button className="btn-primary" style={{ width: '100%', padding: '10px', fontSize: '0.85rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
+                  <PlayCircle size={16} /> Open Interactive Dashboard
+                </button>
+              </Link>
+            </div>
+          </div>
         </div>
         
         <div 
