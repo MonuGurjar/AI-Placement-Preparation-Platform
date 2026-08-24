@@ -16,6 +16,15 @@
 
 ---
 
+## 📚 Documentation & Engineering Specs
+
+- 🏛️ **[Technical Architecture](ARCHITECTURE.md)**: Deep dive into the system layers, database schemas (`User`, `ATSReport`, `MockInterview`), Gemini 2.5 AI pipeline, and security model.
+- 📡 **[API Documentation](API_DOCUMENTATION.md)**: Full RESTful API reference with request bodies, cURL examples, and response schemas for all endpoints.
+- 🤝 **[Contributing Guidelines](CONTRIBUTING.md)**: Open-source community code of conduct, Git branch naming conventions, and PR workflow.
+- 🛡️ **[Security Policy](SECURITY.md)**: Vulnerability disclosure policy, credential isolation, and document buffer privacy guarantees.
+
+---
+
 ## 🛠️ Tech Stack
 
 - **Framework**: [Next.js 16 (App Router)](https://nextjs.org/) & React 19
