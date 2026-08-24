@@ -19,13 +19,22 @@ import {
   Menu,
   X,
   Flame,
-  BrainCircuit
+  BrainCircuit,
+  LogOut
 } from 'lucide-react';
 import './dashboard.css';
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const pathname = usePathname();
+
+  const handleLogout = () => {
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('token');
+      localStorage.removeItem('placement_user_profile');
+      window.location.href = '/auth?mode=login';
+    }
+  };
 
   const navItems = [
     { name: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
@@ -95,6 +104,14 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 </Link>
               );
             })}
+            <button 
+              onClick={handleLogout} 
+              className="sidebar-link logout-btn"
+              style={{ background: 'none', border: 'none', width: '100%', cursor: 'pointer', textAlign: 'left' }}
+            >
+              <LogOut size={20} />
+              <span>Logout</span>
+            </button>
           </div>
         </div>
       </aside>
@@ -118,11 +135,14 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <Flame size={18} color="#ff9800" />
               <span>12 Day Streak</span>
             </div>
-            <button className="icon-btn">
+            <button className="icon-btn" title="Notifications">
               <Bell size={20} />
               <span className="badge">3</span>
             </button>
-            <div className="profile-avatar">
+            <button className="icon-btn logout-topbar-btn" onClick={handleLogout} title="Logout">
+              <LogOut size={18} color="#ff4d4d" />
+            </button>
+            <div className="profile-avatar" title="Account">
               <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="Profile" />
             </div>
           </div>

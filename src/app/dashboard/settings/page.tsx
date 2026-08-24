@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Settings, Save, Key, User, Building } from 'lucide-react';
+import { Settings, Save, Key, User, Building, LogOut } from 'lucide-react';
 import { getStoredProfile, saveStoredProfile, UserProfile, INITIAL_USER_PROFILE } from '@/lib/storage';
 
 export default function SettingsPage() {
@@ -92,6 +92,36 @@ export default function SettingsPage() {
             </span>
           )}
         </form>
+      </div>
+
+      <div className="glass-panel" style={{ padding: '2rem', maxWidth: '800px', borderColor: 'rgba(255, 77, 77, 0.2)' }}>
+        <h3 style={{ fontSize: '1.2rem', color: '#ff4d4d', marginBottom: '0.5rem' }}>Account Session</h3>
+        <p style={{ color: 'var(--color-on-surface-variant)', fontSize: '0.9rem', marginBottom: '1.2rem' }}>
+          Signing out will end your current session and clear local authentication tokens.
+        </p>
+        <button 
+          onClick={() => {
+            if (typeof window !== 'undefined') {
+              localStorage.removeItem('token');
+              localStorage.removeItem('placement_user_profile');
+              window.location.href = '/auth?mode=login';
+            }
+          }}
+          style={{ 
+            background: 'rgba(255, 77, 77, 0.15)', 
+            border: '1px solid rgba(255, 77, 77, 0.4)', 
+            color: '#ff4d4d', 
+            padding: '10px 20px', 
+            borderRadius: '8px', 
+            fontWeight: 600, 
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px'
+          }}
+        >
+          <LogOut size={16} /> Sign Out of Account
+        </button>
       </div>
     </div>
   );
