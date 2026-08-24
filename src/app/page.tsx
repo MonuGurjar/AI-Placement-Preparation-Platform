@@ -115,17 +115,9 @@ export default function LandingPage() {
           }}
         >
           {/* Main Container Layout */}
-          <div style={{ display: 'flex', minHeight: '520px', width: '100%' }}>
+          <div className="mockup-container">
             {/* Sidebar */}
-            <div style={{ 
-              width: '210px', 
-              background: '#101419', 
-              borderRight: '1px solid rgba(255,255,255,0.06)', 
-              padding: '20px 14px', 
-              display: 'flex', 
-              flexDirection: 'column', 
-              justifyContent: 'space-between' 
-            }}>
+            <div className="mockup-sidebar">
               <div>
                 {/* Logo */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '1.1rem', fontWeight: 700, color: 'white', marginBottom: '1.8rem', paddingLeft: '6px' }}>
@@ -177,10 +169,10 @@ export default function LandingPage() {
             </div>
 
             {/* Content Area */}
-            <div style={{ flex: 1, padding: '20px', display: 'flex', flexDirection: 'column', gap: '16px', background: '#0d1117' }}>
+            <div className="mockup-main">
               {/* Top Search & Profile Bar */}
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '20px', padding: '8px 16px', width: '320px', fontSize: '0.8rem', color: 'var(--color-on-surface-variant)' }}>
+              <div className="mockup-top-bar">
+                <div className="mockup-search-box">
                   <Search size={16} color="var(--color-on-surface-variant)" />
                   <span>Search for companies, questions, topics...</span>
                 </div>
@@ -203,15 +195,7 @@ export default function LandingPage() {
               </div>
 
               {/* Welcome Hero Banner */}
-              <div style={{ 
-                background: 'rgba(28, 32, 37, 0.5)', 
-                border: '1px solid rgba(117, 255, 158, 0.15)', 
-                borderRadius: '14px', 
-                padding: '20px 24px', 
-                display: 'flex', 
-                justifyContent: 'space-between', 
-                alignItems: 'center' 
-              }}>
+              <div className="mockup-banner">
                 <div>
                   <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'white', marginBottom: '4px' }}>
                     Welcome back, <span style={{ color: '#75ff9e' }}>Monu!</span>
@@ -221,7 +205,7 @@ export default function LandingPage() {
                   </p>
                 </div>
 
-                <div style={{ display: 'flex', gap: '12px' }}>
+                <div className="mockup-banner-actions">
                   <button style={{ background: 'transparent', border: '1px solid rgba(117,255,158,0.4)', color: '#75ff9e', borderRadius: '8px', padding: '10px 18px', fontSize: '0.85rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '6px' }}>
                     <Briefcase size={16} /> View Company Roadmap
                   </button>
@@ -232,7 +216,7 @@ export default function LandingPage() {
               </div>
 
               {/* 4 KPI Cards */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '14px' }}>
+              <div className="mockup-kpi-grid">
                 <div style={{ background: 'rgba(28, 32, 37, 0.4)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '12px', padding: '16px' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--color-on-surface-variant)', fontSize: '0.8rem', fontWeight: 500 }}>
                     <span>ATS Score</span>
@@ -271,13 +255,13 @@ export default function LandingPage() {
               </div>
 
               {/* Lower Section: Checklist (Left) & Topic Proficiency (Right) */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: '14px' }}>
+              <div className="mockup-lower-grid">
                 {/* Daily Preparation Checklist */}
                 <div style={{ background: 'rgba(28, 32, 37, 0.4)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '14px', padding: '18px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
                   <h3 style={{ fontSize: '0.95rem', fontWeight: 600, color: 'white' }}>Daily Preparation Checklist</h3>
 
                   {/* Task 1 */}
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.04)', borderRadius: '10px', padding: '12px 14px' }}>
+                  <div className="mockup-task-card">
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                       <div style={{ background: 'rgba(117,255,158,0.1)', padding: '8px', borderRadius: '8px', color: '#75ff9e' }}>
                         <BrainCircuit size={18} />
@@ -293,7 +277,7 @@ export default function LandingPage() {
                   </div>
 
                   {/* Task 2 */}
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.04)', borderRadius: '10px', padding: '12px 14px' }}>
+                  <div className="mockup-task-card">
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                       <div style={{ background: 'rgba(117,255,158,0.1)', padding: '8px', borderRadius: '8px', color: '#75ff9e' }}>
                         <MessageSquare size={18} />
@@ -309,7 +293,7 @@ export default function LandingPage() {
                   </div>
 
                   {/* Task 3 */}
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.04)', borderRadius: '10px', padding: '12px 14px' }}>
+                  <div className="mockup-task-card">
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                       <div style={{ background: 'rgba(255, 180, 171, 0.1)', padding: '8px', borderRadius: '8px', color: '#ffb4ab' }}>
                         <AlertTriangle size={18} />
