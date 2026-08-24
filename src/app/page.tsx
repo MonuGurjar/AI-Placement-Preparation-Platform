@@ -11,7 +11,15 @@ import {
   LayoutDashboard,
   BrainCircuit,
   Menu,
-  X
+  X,
+  Search,
+  Flame,
+  Bell,
+  FileCheck,
+  Trophy,
+  TrendingUp,
+  MessageSquare,
+  CheckCircle
 } from 'lucide-react';
 import './page.css';
 
@@ -91,21 +99,125 @@ export default function LandingPage() {
         
         <div 
           className="hero-mockup animate-fade-in-up"
-          style={{ animationDelay: '0.4s' }}
+          style={{ animationDelay: '0.4s', textAlign: 'left' }}
         >
-          {/* Mockup Placeholder */}
-          <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem', height: '100%' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <div style={{ width: '200px', height: '40px', background: 'rgba(255,255,255,0.05)', borderRadius: '8px' }}></div>
-              <div style={{ width: '40px', height: '40px', background: 'rgba(255,255,255,0.05)', borderRadius: '50%' }}></div>
+          {/* Mock Browser Header Bar */}
+          <div style={{ background: 'rgba(16, 20, 25, 0.95)', borderBottom: '1px solid rgba(255,255,255,0.08)', padding: '10px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+              <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ff5f56' }}></div>
+              <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ffbd2e' }}></div>
+              <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#27c93f' }}></div>
             </div>
-            <div style={{ display: 'flex', gap: '1rem', flex: 1 }}>
-              <div style={{ width: '250px', background: 'rgba(255,255,255,0.02)', borderRadius: '12px' }}></div>
-              <div style={{ flex: 1, background: 'rgba(255,255,255,0.02)', borderRadius: '12px', display: 'grid', gap: '1rem', gridTemplateColumns: '1fr 1fr', padding: '1rem' }}>
-                <div style={{ background: 'rgba(117, 255, 158, 0.05)', borderRadius: '8px', border: '1px solid rgba(117, 255, 158, 0.2)' }}></div>
-                <div style={{ background: 'rgba(255, 255, 255, 0.03)', borderRadius: '8px' }}></div>
-                <div style={{ background: 'rgba(255, 255, 255, 0.03)', borderRadius: '8px' }}></div>
-                <div style={{ background: 'rgba(255, 255, 255, 0.03)', borderRadius: '8px' }}></div>
+            <div style={{ background: 'rgba(255,255,255,0.05)', borderRadius: '6px', padding: '4px 16px', fontSize: '0.75rem', color: 'var(--color-on-surface-variant)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <BrainCircuit size={12} color="var(--color-primary)" /> placementai.app/dashboard
+            </div>
+            <div style={{ width: '40px' }}></div>
+          </div>
+
+          {/* Live Application Mockup Body */}
+          <div style={{ display: 'flex', height: 'calc(100% - 37px)', background: '#101419' }}>
+            {/* Sidebar */}
+            <div style={{ width: '180px', borderRight: '1px solid rgba(255,255,255,0.08)', padding: '12px', display: 'flex', flexDirection: 'column', gap: '1rem', background: 'rgba(28, 32, 37, 0.6)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.9rem', fontWeight: 700, color: 'var(--color-primary)', padding: '4px 8px' }}>
+                <BrainCircuit size={18} /> PlacementAI
+              </div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 12px', borderRadius: '6px', background: 'rgba(117,255,158,0.15)', color: 'var(--color-primary)', fontSize: '0.8rem', fontWeight: 600 }}>
+                  <LayoutDashboard size={16} /> Dashboard
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 12px', borderRadius: '6px', color: 'var(--color-on-surface-variant)', fontSize: '0.8rem' }}>
+                  <Code2 size={16} /> DSA Tracker
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 12px', borderRadius: '6px', color: 'var(--color-on-surface-variant)', fontSize: '0.8rem' }}>
+                  <Briefcase size={16} /> Companies
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 12px', borderRadius: '6px', color: 'var(--color-on-surface-variant)', fontSize: '0.8rem' }}>
+                  <FileText size={16} /> Resume ATS
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 12px', borderRadius: '6px', color: 'var(--color-on-surface-variant)', fontSize: '0.8rem' }}>
+                  <MessageSquare size={16} /> Mock Interview
+                </div>
+              </div>
+            </div>
+
+            {/* Main Dashboard Panel */}
+            <div style={{ flex: 1, padding: '16px', display: 'flex', flexDirection: 'column', gap: '12px', overflowY: 'hidden' }}>
+              {/* Topbar */}
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(28,32,37,0.4)', padding: '8px 14px', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.06)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'rgba(255,255,255,0.05)', padding: '6px 12px', borderRadius: '6px', width: '220px', fontSize: '0.75rem', color: 'var(--color-on-surface-variant)' }}>
+                  <Search size={14} /> Search companies, DSA...
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px', background: 'rgba(255,152,0,0.15)', padding: '4px 10px', borderRadius: '12px', fontSize: '0.75rem', color: '#ff9800', fontWeight: 600 }}>
+                    <Flame size={14} color="#ff9800" /> 12 Streak
+                  </div>
+                  <div style={{ position: 'relative', color: 'var(--color-on-surface)' }}>
+                    <Bell size={16} />
+                    <span style={{ position: 'absolute', top: '-2px', right: '-2px', width: '6px', height: '6px', borderRadius: '50%', background: 'var(--color-primary)' }}></span>
+                  </div>
+                  <div style={{ width: '26px', height: '26px', borderRadius: '50%', background: 'var(--color-primary)', color: '#003918', fontWeight: 700, fontSize: '0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    AD
+                  </div>
+                </div>
+              </div>
+
+              {/* Hero Banner inside mockup */}
+              <div style={{ background: 'linear-gradient(135deg, rgba(117,255,158,0.1) 0%, rgba(28,32,37,0.6) 100%)', border: '1px solid rgba(117,255,158,0.2)', padding: '12px 16px', borderRadius: '10px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div>
+                  <div style={{ fontSize: '0.95rem', fontWeight: 700, color: 'white' }}>Welcome back, <span style={{ color: 'var(--color-primary)' }}>Alex!</span></div>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--color-on-surface-variant)' }}>Targeting: <strong>Software Engineer @ Google</strong></div>
+                </div>
+                <button style={{ background: 'var(--color-primary)', color: '#003918', border: 'none', padding: '6px 12px', borderRadius: '6px', fontSize: '0.75rem', fontWeight: 600, cursor: 'pointer' }}>
+                  View Roadmap
+                </button>
+              </div>
+
+              {/* KPI Cards Grid */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '10px' }}>
+                <div style={{ background: 'rgba(28,32,37,0.6)', border: '1px solid rgba(255,255,255,0.06)', padding: '10px', borderRadius: '8px' }}>
+                  <div style={{ fontSize: '0.7rem', color: 'var(--color-on-surface-variant)', display: 'flex', justifyContent: 'space-between' }}>
+                    ATS Score <FileCheck size={12} color="var(--color-primary)" />
+                  </div>
+                  <div style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--color-primary)', margin: '2px 0' }}>85%</div>
+                  <div style={{ fontSize: '0.65rem', color: '#75ff9e' }}>+5% this week</div>
+                </div>
+
+                <div style={{ background: 'rgba(28,32,37,0.6)', border: '1px solid rgba(255,255,255,0.06)', padding: '10px', borderRadius: '8px' }}>
+                  <div style={{ fontSize: '0.7rem', color: 'var(--color-on-surface-variant)', display: 'flex', justifyContent: 'space-between' }}>
+                    Placement Prob. <Target size={12} color="var(--color-primary)" />
+                  </div>
+                  <div style={{ fontSize: '1.2rem', fontWeight: 700, color: 'white', margin: '2px 0' }}>92%</div>
+                  <div style={{ fontSize: '0.65rem', color: 'var(--color-primary)' }}>High Chance</div>
+                </div>
+
+                <div style={{ background: 'rgba(28,32,37,0.6)', border: '1px solid rgba(255,255,255,0.06)', padding: '10px', borderRadius: '8px' }}>
+                  <div style={{ fontSize: '0.7rem', color: 'var(--color-on-surface-variant)', display: 'flex', justifyContent: 'space-between' }}>
+                    DSA Solved <Trophy size={12} color="var(--color-primary)" />
+                  </div>
+                  <div style={{ fontSize: '1.2rem', fontWeight: 700, color: 'white', margin: '2px 0' }}>124</div>
+                  <div style={{ fontSize: '0.65rem', color: 'var(--color-on-surface-variant)' }}>Top 15% User</div>
+                </div>
+
+                <div style={{ background: 'rgba(28,32,37,0.6)', border: '1px solid rgba(255,255,255,0.06)', padding: '10px', borderRadius: '8px' }}>
+                  <div style={{ fontSize: '0.7rem', color: 'var(--color-on-surface-variant)', display: 'flex', justifyContent: 'space-between' }}>
+                    Mock Interviews <TrendingUp size={12} color="var(--color-primary)" />
+                  </div>
+                  <div style={{ fontSize: '1.2rem', fontWeight: 700, color: 'white', margin: '2px 0' }}>4</div>
+                  <div style={{ fontSize: '0.65rem', color: '#ffba79' }}>Score: 88/100</div>
+                </div>
+              </div>
+
+              {/* Action List Preview */}
+              <div style={{ background: 'rgba(28,32,37,0.6)', border: '1px solid rgba(255,255,255,0.06)', padding: '10px 14px', borderRadius: '8px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                <div style={{ fontSize: '0.75rem', fontWeight: 600, color: 'white' }}>Daily Preparation Checklist</div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(255,255,255,0.02)', padding: '6px 10px', borderRadius: '6px', fontSize: '0.75rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <CheckCircle size={14} color="var(--color-primary)" />
+                    <span>Daily DSA: Two Sum (Arrays & Hashing)</span>
+                  </div>
+                  <span style={{ padding: '2px 8px', background: 'rgba(117,255,158,0.15)', color: 'var(--color-primary)', borderRadius: '4px', fontSize: '0.65rem', fontWeight: 600 }}>Solved</span>
+                </div>
               </div>
             </div>
           </div>

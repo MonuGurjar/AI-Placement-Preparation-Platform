@@ -2,13 +2,61 @@ import { NextResponse } from 'next/server';
 import { GoogleGenAI } from '@google/genai';
 import { connectToDatabase } from '@/lib/mongodb';
 import ATSReportModel from '@/models/ATSReport';
+import mammoth from 'mammoth';
 
 export async function POST(req: Request) {
   try {
-    const { resumeText, targetRole, userId } = await req.json();
+    let resumeText = '';
+    let targetRole = 'Software Engineer';
+    let userId = '';
 
-    if (!resumeText || typeof resumeText !== 'string') {
-      return NextResponse.json({ error: 'Resume text is required' }, { status: 400 });
+    const contentType = req.headers.get('content-type') || '';
+
+    if (contentType.includes('multipart/form-data')) {
+      const formData = await req.formData();
+      const file = formData.get('file') as File | null;
+      targetRole = (formData.get('targetRole') as string) || 'Software Engineer';
+      userId = (formData.get('userId') as string) || '';
+
+      if (!file) {
+        return NextResponse.json({ error: 'No file uploaded' }, { status: 400 });
+      }
+
+      const bytes = await file.arrayBuffer();
+      const buffer = Buffer.from(bytes);
+      const fileName = file.name.toLowerCase();
+
+      if (fileName.endsWith('.pdf')) {
+        try {
+          // Dynamically load pdf-parse on demand to avoid top-level canvas DOMMatrix SSR issues
+          // eslint-disable-next-line @typescript-eslint/no-var-requires
+          const pdfParse = require('pdf-parse');
+          const pdfData = await pdfParse(buffer);
+          resumeText = pdfData.text || '';
+        } catch (pdfErr) {
+          console.warn('PDF parse error, falling back to raw buffer string:', pdfErr);
+          resumeText = buffer.toString('utf-8').replace(/[^\x20-\x7E\n\r\t]/g, ' ');
+        }
+      } else if (fileName.endsWith('.docx')) {
+        try {
+          const docxData = await mammoth.extractRawText({ buffer });
+          resumeText = docxData.value || '';
+        } catch (docxErr) {
+          console.warn('DOCX parse error:', docxErr);
+          resumeText = buffer.toString('utf-8').replace(/[^\x20-\x7E\n\r\t]/g, ' ');
+        }
+      } else {
+        resumeText = buffer.toString('utf-8');
+      }
+    } else {
+      const body = await req.json();
+      resumeText = body.resumeText || '';
+      targetRole = body.targetRole || 'Software Engineer';
+      userId = body.userId || '';
+    }
+
+    if (!resumeText || typeof resumeText !== 'string' || resumeText.trim().length === 0) {
+      return NextResponse.json({ error: 'Failed to extract text from resume. Please ensure the file is not password protected.' }, { status: 400 });
     }
 
     const apiKey = process.env.GEMINI_API_KEY;
@@ -101,6 +149,7 @@ Return your evaluation ONLY as a valid JSON object with the following exact keys
       success: true, 
       report, 
       source,
+      extractedSnippet: resumeText.slice(0, 300) + '...',
       notice: apiKey === 'your_gemini_api_key_here' ? 'Using fallback ATS scanner. Replace GEMINI_API_KEY in .env.local for live Gemini AI evaluation.' : undefined
     });
   } catch (error) {
