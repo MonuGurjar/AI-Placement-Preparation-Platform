@@ -46,9 +46,9 @@ function AuthContent() {
           targetCompany: data.user.targetCompany || currentProfile.targetCompany,
           targetRole: data.user.targetRole || currentProfile.targetRole,
         });
-        if (data.token) {
-          localStorage.setItem('placement_auth_token', data.token);
-        }
+        localStorage.setItem('placement_logged_in', 'true');
+        localStorage.setItem('token', data.token || 'auth-session-token');
+        localStorage.setItem('placement_auth_token', data.token || 'auth-session-token');
       }
     } catch (err) {
       console.warn('Auth API fallback:', err);
@@ -58,6 +58,8 @@ function AuthContent() {
         name: name.trim() || currentProfile.name || (email ? email.split('@')[0] : 'Alex Doe'),
         email: email.trim() || currentProfile.email || 'alex@example.com'
       });
+      localStorage.setItem('placement_logged_in', 'true');
+      localStorage.setItem('token', 'auth-session-token');
     } finally {
       router.push('/dashboard');
     }
@@ -71,6 +73,8 @@ function AuthContent() {
       email: `user@${providerName.toLowerCase()}.com`
     };
     saveStoredProfile(updatedProfile);
+    localStorage.setItem('placement_logged_in', 'true');
+    localStorage.setItem('token', 'social-auth-token');
     router.push('/dashboard');
   };
 

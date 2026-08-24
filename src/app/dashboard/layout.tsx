@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { 
   LayoutDashboard, 
   Code2, 
@@ -26,13 +26,50 @@ import './dashboard.css';
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const pathname = usePathname();
+  const router = useRouter();
+
+  const checkAuth = () => {
+    if (typeof window === 'undefined') return;
+    const token = localStorage.getItem('token') || localStorage.getItem('placement_auth_token');
+    const isLoggedIn = localStorage.getItem('placement_logged_in');
+    const profile = localStorage.getItem('placement_user_profile');
+
+    if (!token && !isLoggedIn && !profile) {
+      setIsAuthenticated(false);
+      window.location.replace('/auth?mode=login');
+    } else {
+      setIsAuthenticated(true);
+    }
+  };
+
+  useEffect(() => {
+    checkAuth();
+
+    // Prevent BFCache / Back Button access after logout
+    const handlePageShow = (event: PageTransitionEvent) => {
+      checkAuth();
+    };
+
+    window.addEventListener('pageshow', handlePageShow);
+    window.addEventListener('focus', checkAuth);
+
+    return () => {
+      window.removeEventListener('pageshow', handlePageShow);
+      window.removeEventListener('focus', checkAuth);
+    };
+  }, [pathname]);
 
   const handleLogout = () => {
     if (typeof window !== 'undefined') {
       localStorage.removeItem('token');
+      localStorage.removeItem('placement_auth_token');
+      localStorage.removeItem('placement_logged_in');
       localStorage.removeItem('placement_user_profile');
-      window.location.href = '/auth?mode=login';
+      sessionStorage.clear();
+      setIsAuthenticated(false);
+      window.location.replace('/auth?mode=login');
     }
   };
 
@@ -52,6 +89,21 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     { name: 'Notifications', path: '/dashboard/notifications', icon: Bell },
     { name: 'Settings', path: '/dashboard/settings', icon: Settings },
   ];
+
+  if (isAuthenticated === null) {
+    return (
+      <div style={{ display: 'flex', height: '100vh', width: '100vw', alignItems: 'center', justifyContent: 'center', background: '#101419', color: '#75ff9e' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+          <BrainCircuit size={40} />
+          <span style={{ fontSize: '0.9rem', color: 'var(--color-on-surface-variant)' }}>Verifying security session...</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (isAuthenticated === false) {
+    return null;
+  }
 
   return (
     <div className="dashboard-layout">
