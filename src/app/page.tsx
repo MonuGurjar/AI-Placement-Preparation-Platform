@@ -371,50 +371,62 @@ export default function LandingPage() {
         <div className="features-grid">
           <div className="feature-card glass-panel">
             <div className="feature-icon">
-              <FileText size={24} />
+              <FileText size={20} />
             </div>
-            <h3 className="feature-title">Resume Analyzer</h3>
-            <p className="feature-desc">Get instant ATS feedback. Fix missing keywords, formatting issues, and tailor your resume for specific roles.</p>
+            <div className="feature-content">
+              <h3 className="feature-title">Resume Analyzer</h3>
+              <p className="feature-desc">Get instant ATS feedback. Fix missing keywords, formatting issues, and tailor your resume for specific roles.</p>
+            </div>
           </div>
           
           <div className="feature-card glass-panel">
             <div className="feature-icon">
-              <Code2 size={24} />
+              <Code2 size={20} />
             </div>
-            <h3 className="feature-title">DSA Progress Tracker</h3>
-            <p className="feature-desc">Track your problem-solving journey across platforms. Identify weak topics and get AI-recommended questions.</p>
+            <div className="feature-content">
+              <h3 className="feature-title">DSA Progress Tracker</h3>
+              <p className="feature-desc">Track your problem-solving journey across platforms. Identify weak topics and get AI-recommended questions.</p>
+            </div>
           </div>
           
           <div className="feature-card glass-panel">
             <div className="feature-icon">
-              <Briefcase size={24} />
+              <Briefcase size={20} />
             </div>
-            <h3 className="feature-title">Company Roadmaps</h3>
-            <p className="feature-desc">Curated preparation guides for top tech companies. Know exactly what to study for your target company.</p>
+            <div className="feature-content">
+              <h3 className="feature-title">Company Roadmaps</h3>
+              <p className="feature-desc">Curated preparation guides for top tech companies. Know exactly what to study for your target company.</p>
+            </div>
           </div>
           
           <div className="feature-card glass-panel">
             <div className="feature-icon">
-              <Target size={24} />
+              <Target size={20} />
             </div>
-            <h3 className="feature-title">Mock Interviews</h3>
-            <p className="feature-desc">Practice with our AI interviewer. Get feedback on your communication, technical accuracy, and confidence.</p>
+            <div className="feature-content">
+              <h3 className="feature-title">Mock Interviews</h3>
+              <p className="feature-desc">Practice with our AI interviewer. Get feedback on your communication, technical accuracy, and confidence.</p>
+            </div>
           </div>
           
           <div className="feature-card glass-panel">
             <div className="feature-icon">
-              <LayoutDashboard size={24} />
+              <LayoutDashboard size={20} />
             </div>
-            <h3 className="feature-title">Personalized Dashboard</h3>
-            <p className="feature-desc">Your command center. View your daily streak, upcoming goals, and overall placement probability.</p>
+            <div className="feature-content">
+              <h3 className="feature-title">Personalized Dashboard</h3>
+              <p className="feature-desc">Your command center. View your daily streak, upcoming goals, and overall placement probability.</p>
+            </div>
           </div>
           
           <div className="feature-card glass-panel">
             <div className="feature-icon">
-              <Rocket size={24} />
+              <Rocket size={20} />
             </div>
-            <h3 className="feature-title">AI Recommendations</h3>
-            <p className="feature-desc">Smart suggestions on what to focus on next based on your current progress and target role.</p>
+            <div className="feature-content">
+              <h3 className="feature-title">AI Recommendations</h3>
+              <p className="feature-desc">Smart suggestions on what to focus on next based on your current progress and target role.</p>
+            </div>
           </div>
         </div>
       </section>
